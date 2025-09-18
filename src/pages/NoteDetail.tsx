@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { useNote, useDeleteNote } from '@/hooks/useNotes';
 import { formatDistanceToNow } from 'date-fns';
 import { ArrowLeft, Edit, Trash2, Download, Paperclip } from 'lucide-react';
+import { SummarizeButton } from '@/components/SummarizeButton';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -159,10 +160,17 @@ const NoteDetail = () => {
         </div>
 
         {/* Content */}
-        <div className="prose prose-gray max-w-none">
+        <div className="prose prose-gray max-w-none space-y-4">
           <div className="whitespace-pre-wrap text-foreground leading-relaxed">
             {note.body}
           </div>
+          
+          {/* AI Summarize Button */}
+          {note.body && note.body.length > 100 && (
+            <div className="not-prose border-t pt-4">
+              <SummarizeButton text={note.body} />
+            </div>
+          )}
         </div>
 
         {/* Attachment */}

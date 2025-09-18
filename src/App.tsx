@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Notes from "./pages/Notes";
 import NoteDetail from "./pages/NoteDetail";
@@ -38,8 +39,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Navigate to="/notes" replace />} />
           <Route path="/notes" element={
             <ProtectedRoute>
               <Notes />
